@@ -6,6 +6,7 @@ const userSchema = new mongoose.Schema({
   password: { type: String, required: true },
   roundsPlayed: { type: Number, default: 0 },
   level: { type: Number, default: 1 },
+  score: { type: Number, default: 0 },
 });
 
 const User = mongoose.model('User', userSchema);

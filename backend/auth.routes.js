@@ -53,7 +53,7 @@ router.post('/login', async (req, res) => {
     const token = jwt.sign({ id: user._id }, 'your_jwt_secret', { expiresIn: '1h' });
     res.status(200).json({
       token,
-      user: { email: user.email, roundsPlayed: user.roundsPlayed, level: user.level },
+      user: { email: user.email, score: user.score, roundsPlayed: user.roundsPlayed, level: user.level },
     });
   } catch (error) {
     res.status(500).json({ message: 'Server error' });
@@ -63,7 +63,7 @@ router.post('/login', async (req, res) => {
 // Update User Game Data (e.g., after playing a round)
 // Update User Game Data (e.g., after playing a round)
 router.post('/update', async (req, res) => {
-  const { token, score, gamesPlayedIncrement, levelIncrement } = req.body;
+  const { token, scoreIncrement, gamesPlayedIncrement, levelIncrement } = req.body;
 
   try {
     // Decode the JWT to get the user ID
@@ -77,7 +77,7 @@ router.post('/update', async (req, res) => {
     }
 
     // Update the user fields
-    user.score = score;
+    user.score = scoreIncrement; // Update score with the passed value
     user.level = levelIncrement; // Update level with the passed value
     user.roundsPlayed += gamesPlayedIncrement;
 
