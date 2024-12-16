@@ -1,11 +1,22 @@
-<header>
-    <h1> Project </h1>
-  <nav>
-    <ul>
-      <li> <a [routerLink]="['/']"> Home </a> </li>
-      <li> <a [routerLink]="['/login']" > Login </a> </li>
-      <li> <a [routerLink]="['/game']" > People </a> </li>
-      
-    </ul>
-    </nav>
+<header class="header">
+  <div class="header-content">
+    <h1>My App</h1>
+
+    <!-- User Actions -->
+    <div class="user-actions">
+      <div class="user-icon" (click)="isLoggedIn ? logout() : login()">
+        <img src="path/to/your/icon.png" alt="User Icon" />
+        <span *ngIf="isLoggedIn">{{ userName }}</span>
+      </div>
+
+      <div *ngIf="!isLoggedIn" class="auth-links">
+        <button (click)="login()">Login</button>
+        <button (click)="register()">Register</button>
+      </div>
+
+      <div *ngIf="isLoggedIn" class="auth-links">
+        <button (click)="logout()">Logout</button>
+      </div>
+    </div>
+  </div>
 </header>

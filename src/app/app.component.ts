@@ -1,15 +1,14 @@
 import { Component } from '@angular/core';
-import { RouterModule, RouterOutlet } from '@angular/router';
-import { HomeComponent } from './home/home.component';
-import { HeaderComponent } from './header/header.component';
-
+import { RouterOutlet } from '@angular/router';
+import { HeaderComponent } from './header/header.component'; // Import HeaderComponent
 
 @Component({
   selector: 'app-root',
-  template: `<router-outlet></router-outlet>`,
-  standalone: true,
-  imports: [RouterOutlet], // Import RouterOutlet to enable routing
+  standalone: true,  // Mark as standalone component
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css'],
+  imports: [RouterOutlet, HeaderComponent],  // Import HeaderComponent here
 })
 export class AppComponent {
-  title = 'example-project';
+  title = 'Pokemon Memory Game';
 }

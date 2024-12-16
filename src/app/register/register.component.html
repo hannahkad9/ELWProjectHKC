@@ -1,49 +1,42 @@
-<!-- register.component.html -->
 <div class="register-container">
-    <h2>Register</h2>
-  
+  <div class="register-box">
+    <!-- Header -->
+    <div class="header">
+      <span>WELCOME</span>
+    </div>
+
+    <!-- Success Message -->
+    <div *ngIf="successMessage" class="success-message">
+      <span>{{ successMessage }}</span>
+    </div>
+
+    <!-- Error Message -->
+    <div *ngIf="errorMessage" class="error-message">
+      <span>{{ errorMessage }}</span>
+    </div>
+
     <!-- Registration Form -->
     <form (ngSubmit)="register()">
-      <div class="form-group">
-        <label for="email">Email</label>
-        <input
-          type="email"
-          id="email"
-          [(ngModel)]="email"
-          name="email"
-          required
-          class="form-control"
-          placeholder="Enter your email"
-        />
+      <div class="input-group">
+        <span class="icon">👤</span>
+        <input type="email" placeholder="Email" [(ngModel)]="email" name="email" required />
       </div>
-  
-      <div class="form-group">
-        <label for="password">Password</label>
-        <input
-          type="password"
-          id="password"
-          [(ngModel)]="password"
-          name="password"
-          required
-          class="form-control"
-          placeholder="Enter your password"
-        />
+      <div class="input-group">
+        <span class="icon">🔒</span>
+        <input type="password" placeholder="Password" [(ngModel)]="password" name="password" required />
       </div>
-  
-      <button type="submit" class="btn btn-primary">Register</button>
+
+      <!-- Sign Up Button -->
+      <button type="submit" class="signup-button">SIGN UP</button>
     </form>
-  
-    <!-- Error and Success Messages -->
-    <div *ngIf="errorMessage" class="error-message">
-      {{ errorMessage }}
-    </div>
-    <div *ngIf="successMessage" class="success-message">
-      {{ successMessage }}
-    </div>
-  
-    <!-- Link to login page -->
-    <div class="login-link">
-      <p>Already have an account? <a routerLink="/login">Login</a></p>
-    </div>
-  </div>
-  
+
+    <!-- Redirect to Login -->
+<!-- Redirect to Login -->
+<div class="login-redirect">
+  <span>Already have an account? 
+    <a [routerLink]="['/login']">Login</a>
+  </span>
+</div>
+
+</div>
+

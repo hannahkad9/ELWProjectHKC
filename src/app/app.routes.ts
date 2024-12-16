@@ -5,8 +5,14 @@ import { LoginComponent } from './login/login.component';
 import { GameComponent } from './game/game.component';
 import { AuthGuard } from './auth.guard';
 import { RegisterComponent } from './register/register.component';
+import { HeaderComponent } from './header/header.component';
 
 export const routes: Routes = [
+  {
+path: 'header',
+component: HeaderComponent,
+title: 'Header',
+  },
     {
       path: 'game',
       component: GameComponent,

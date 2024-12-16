@@ -22,7 +22,7 @@ export class GameComponent implements OnInit {
   lockBoard: boolean = false;
   pairsFound: number = 0;
   tries: number = 0;
-  score: number = Number(localStorage.getItem('score')) || 0;  // Track score
+  score: number = Number(localStorage.getItem('score'));  // Track score
   moves: number = 0;  // Track moves as pairs
   misses: number = 0;  // Track misses
   roundsPlayed: number = Number(localStorage.getItem('roundsPlayed')) || 0; // Track rounds played
@@ -198,7 +198,7 @@ export class GameComponent implements OnInit {
     // Prepare data for backend update
     const data = {
       token: token,
-      score: this.score, // Send the updated score
+      scoreIncrement: this.score, // Send the updated score
       gamesPlayedIncrement: 1, // Increment games played
       levelIncrement: this.level // Send the current level
     };
@@ -221,4 +221,11 @@ export class GameComponent implements OnInit {
     const pointsNeeded = basePointsToLevelUp + (this.level - 1) * levelMultiplier;
     return pointsNeeded - this.score;
   }
+  // Method to calculate progress percentage
+calculateLevelProgress(): number {
+  const pointsNeeded = this.calculatePointsNeeded();
+  const pointsForCurrentLevel = this.score % pointsNeeded;
+  return (pointsForCurrentLevel / pointsNeeded) * 100;
+}
+
 }

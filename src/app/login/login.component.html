@@ -1,17 +1,31 @@
-<div>
-><form (submit)="login()">
-  <input type="email" [(ngModel)]="email" name="email" autocomplete="email" />
-  <input type="password" [(ngModel)]="password" name="password" autocomplete="current-password" />
-  <button type="submit">Login</button>
-</form>
+<div class="login-container">
+  <div class="login-box">
+    <!-- Header -->
+    <div class="header">
+      <span>WELCOME</span>
+    </div>
 
-  <!-- Error Message Display -->
-  <div *ngIf="errorMessage" class="error-message">
-    {{ errorMessage }}
-  </div>
+    <!-- Error Message -->
+    <div *ngIf="errorMessage" class="error-message">
+      <span>{{ errorMessage }}</span>
+    </div>
 
-  <!-- Register Link -->
-  <div class="register-link">
-    <p>Don't have an account? <a (click)="openRegisterWindow()">Register</a></p>
+    <!-- Form -->
+    <form>
+      <div class="input-group">
+        <span class="icon">👤</span>
+        <input type="text" placeholder="Username" [(ngModel)]="email" name="username" required />
+      </div>
+      <div class="input-group">
+        <span class="icon">🔒</span>
+        <input type="password" placeholder="Password" [(ngModel)]="password" name="password" required />
+      </div>
+
+      <!-- Buttons -->
+      <div class="button-group">
+        <button type="button" class="signup-button" (click)="openRegisterWindow()">SIGN UP</button>
+        <button type="submit" class="login-button" (click)="login()">LOGIN</button>
+      </div>
+    </form>
   </div>
 </div>

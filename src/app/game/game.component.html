@@ -1,5 +1,50 @@
+<!-- Game Container -->
 <div class="game-container">
-    <h1>Pokémon Memory Game</h1>
+  <!-- Game Title -->
+  <h1 class="game-title">Pokémon Memory Game</h1>
+
+  <!-- Level Progress Section -->
+<!-- Level Progress Section -->
+<div class="level-progress-container">
+  <div class="level-info">
+    <!-- Current Level -->
+    <span class="level-label">Level {{ level }}</span>
+
+    <!-- Progress Bar -->
+    <div class="progress-bar">
+      <div
+        class="progress-fill"
+        [style.width.%]="calculateLevelProgress()"
+      >
+        <!-- Display Score Inside the Bar -->
+        <span class="progress-text"> {{ score | number: '1.2-2' }}</span>
+      </div>
+    </div>
+
+    <!-- Next Level -->
+    <span class="level-label">Level {{ level + 1 }}</span>
+  </div>
+</div>
+
+
+  <!-- Player Stats Row -->
+  <div class="player-stats-row">
+    <div class="stat-item">
+      <p>Moves: <span>{{ moves }}</span></p>
+    </div>
+    <div class="stat-item">
+      <p>Misses: <span>{{ misses }}</span></p>
+    </div>
+    <div class="stat-item">
+      <p>Rounds: <span>{{ roundsPlayed }}</span></p>
+    </div>
+    <div class="stat-item">
+      <p>Accuracy: <span>{{ accuracy | number: '1.0-2' }}%</span></p>
+    </div>
+  </div>
+
+  <!-- Game Configuration -->
+  <div class="game-config">
     <label for="numCards">Number of pairs:</label>
     <input
       type="number"
@@ -8,44 +53,31 @@
       min="2"
       max="40"
     />
-    <button (click)="startGame()">Start Game</button>
+    <button (click)="startGame()" class="start-btn">Start Game</button>
+  </div>
 
-  
-    <div class="cards">
-      <app-card
-        *ngFor="let card of cards"
-        [pokemon]="card"
-        (click)="flipCard(card)"
-      ></app-card>
+  <!-- Cards Grid -->
+  <div class="cards">
+    <app-card
+      *ngFor="let card of cards"
+      [pokemon]="card"
+      (click)="flipCard(card)"
+    ></app-card>
+  </div>
+
+  <!-- Popup for Winning -->
+  <div id="winPopup" class="popup" [class.show]="showPopup">
+    <div class="popup-content">
+      <h2>Congratulations! 🎉</h2>
+      <p>You have matched all the cards!</p>
+      <button (click)="restartGame()" class="restart-btn">
+        Restart Game
+      </button>
     </div>
-  
-    <div
-  id="winPopup"
-  class="popup"
-  [class.show]="showPopup"
->
-  <div class="popup-content">
-    <h2>Congratulations! 🎉</h2>
-    <p>You have matched all the cards!</p>
-    <button (click)="restartGame()" class="restart-btn">Restart Game</button>
+  </div>
+
+  <!-- Logout Button -->
+  <div class="logout-section">
+    <button (click)="logout()" class="logout-btn">Logout</button>
   </div>
 </div>
-
-<div>
-    <p>Score: {{ score }}</p>
-    <p>Points needed for next level: {{ calculatePointsNeeded() }}</p>
-    <p>Moves: {{ moves }}</p>
-    <p>Misses: {{ misses }}</p>
-    <p>Rounds Played: {{ roundsPlayed }}</p>
-    <p>Level: {{ level }}</p>
-    <p>Accuracy: {{ accuracy | number: '1.0-2' }}%</p>
-  </div>
-  
-<button (click)="logout()">Logout</button>
-
-
-
-  </div>
-  
-
-  

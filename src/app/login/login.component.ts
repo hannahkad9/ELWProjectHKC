@@ -35,7 +35,7 @@ export class LoginComponent {
           const score = user?.score ?? 0; // Default to 0 if score is undefined
           const roundsPlayed = user?.roundsPlayed ?? 0; // Default to 0 if roundsPlayed is undefined
           const level = user?.level ?? 1; // Default to 1 if level is undefined
-
+          console.log(score, user.roundsPlayed, user.level);
           // Store user data, token, and other necessary values in localStorage
           localStorage.setItem('score', score.toString());
           localStorage.setItem('roundsPlayed', roundsPlayed.toString());
