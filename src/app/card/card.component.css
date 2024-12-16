@@ -1,0 +1,44 @@
+.card {
+  position: relative;
+  width: 130px;
+  height: 150px; /* Increased height to allow more space for the abbreviation */
+  border: 2px solid #808080;
+  border-radius: 8px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column; /* Stack the flag image, country name, and abbreviation vertically */
+  transition: all 0.3s ease-in-out;
+  background-color: #ccc;
+  padding-top: 10px; /* Ensure there's space at the top */
+}
+
+.card img {
+  width: 100px; /* Fixed width for all flag images */
+  height: 70px; /* Fixed height for all flag images */
+  object-fit: cover; /* Ensures flag maintains aspect ratio and fits inside the box */
+}
+
+.country-name {
+  margin-top: 6px; /* Add space between flag and country name */
+  font-size: 14px;
+  text-align: center;
+  color: black;
+}
+
+.abbreviation {
+  margin-top: 8px; /* Add space between country name and abbreviation */
+  font-size: 16px;
+  font-weight: bold;
+  color: black;
+  visibility: hidden; /* Hide abbreviation until the card is matched */
+}
+
+.card.matched {
+  background-color: rgba(0, 255, 0, 0.3); /* Greenish background when matched */
+}
+
+.card.matched .abbreviation {
+  visibility: visible; /* Make abbreviation visible when matched */
+}

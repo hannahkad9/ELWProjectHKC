@@ -1,0 +1,15 @@
+@for(film of films(); track film.episode_id){
+  <div class="film">
+    @if(film.episode_id === selectedFilm()){
+        <app-film 
+        [title]="film.title"
+        [description]="film.opening_crawl"
+        [releaseDate]="film.release_date"
+        ></app-film>
+        <a [routerLink]="['/films', film.episode_id]">Film details</a>
+    }@else{
+   <h2>{{film.title}}</h2>
+   <button (click)="onClickDetails(film)">Film dettails</button>
+     }
+  </div>
+    }

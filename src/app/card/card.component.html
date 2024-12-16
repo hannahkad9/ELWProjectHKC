@@ -1,0 +1,24 @@
+<div
+  class="card"
+  [class.flipped]="pokemon.flipped"
+  [class.matched]="pokemon.matched"
+  [style.background]="pokemon.matched ? 'blur(5px)' : ''"
+>
+  <!-- Display flag image -->
+  <img
+    *ngIf="pokemon.flipped || pokemon.matched"
+    [src]="pokemon.flag"
+    [alt]="pokemon.country"
+  />
+  
+  <!-- Display country name under the flag when flipped -->
+  <div *ngIf="pokemon.flipped || pokemon.matched" class="country-name">
+    <span>{{ pokemon.name }}</span>
+  </div>
+
+  <div *ngIf="pokemon.matched" class="abbreviation">
+    <span>{{ pokemon.country }}</span>
+  </div>
+
+</div>
+

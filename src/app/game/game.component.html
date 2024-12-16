@@ -1,0 +1,51 @@
+<div class="game-container">
+    <h1>Pokémon Memory Game</h1>
+    <label for="numCards">Number of pairs:</label>
+    <input
+      type="number"
+      id="numCards"
+      [(ngModel)]="pairs"
+      min="2"
+      max="40"
+    />
+    <button (click)="startGame()">Start Game</button>
+
+  
+    <div class="cards">
+      <app-card
+        *ngFor="let card of cards"
+        [pokemon]="card"
+        (click)="flipCard(card)"
+      ></app-card>
+    </div>
+  
+    <div
+  id="winPopup"
+  class="popup"
+  [class.show]="showPopup"
+>
+  <div class="popup-content">
+    <h2>Congratulations! 🎉</h2>
+    <p>You have matched all the cards!</p>
+    <button (click)="restartGame()" class="restart-btn">Restart Game</button>
+  </div>
+</div>
+
+<div>
+    <p>Score: {{ score }}</p>
+    <p>Points needed for next level: {{ calculatePointsNeeded() }}</p>
+    <p>Moves: {{ moves }}</p>
+    <p>Misses: {{ misses }}</p>
+    <p>Rounds Played: {{ roundsPlayed }}</p>
+    <p>Level: {{ level }}</p>
+    <p>Accuracy: {{ accuracy | number: '1.0-2' }}%</p>
+  </div>
+  
+<button (click)="logout()">Logout</button>
+
+
+
+  </div>
+  
+
+  

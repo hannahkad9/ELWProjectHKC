@@ -1,0 +1,7 @@
+@if(film() !== null){
+    <app-film 
+        [title]="film()!.title"
+        [description]="film()!.opening_crawl"
+        [releaseDate]="film()!.release_date"
+    ></app-film>
+}
